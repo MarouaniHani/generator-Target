@@ -84,5 +84,35 @@ module.exports = class extends Generator {
       end(){
           console.log('finished !!');
       }*/
+      //******* distination folder   *******
+      /*path(){
+          this.destinationRoot();
+
+          this.destinationPath('index.js');
+      }*/
+      //******* copy file   *******
+      /*writin() {
+          this.fs.copyTpl(
+              this.templatePath('index.html'),
+              this.destinationPath('public/index.html'),
+              { title: 'Template with Hany'}
+          );
+      }*/
+      //******* change input in file from cmd and copy it   *******
+      /*async prompting() {
+        this.answers = await this.prompt([{
+          type    : 'input',
+          name    : 'title',
+          message : 'Your project title',
+        }]);
+      }
+    
+      writing() {
+        this.fs.copyTpl(
+          this.templatePath('index.html'),
+          this.destinationPath('public/index.html'),
+          { title: this.answers.title } // user answer `title` used
+        );
+      }*/
 
 };
