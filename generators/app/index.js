@@ -3,8 +3,6 @@ var Generator = require('yeoman-generator');
 module.exports = class extends Generator {
     constructor(args, opts) {
         super(args, opts);
-       // this.argument('appname',{ type: String, required: true});
-        //this.log(this.options.appname);
         // custom code
         this.option('babel');
 
@@ -16,7 +14,9 @@ module.exports = class extends Generator {
     _method2() {
         this.log('method 2 just ran');
     }*/
-    //using priorityName
+
+    //******* using priorityName *******
+
     /*end(){
         console.log('end');
     }
@@ -53,7 +53,9 @@ module.exports = class extends Generator {
         this.log('satisfaction',answers.satis);
         
       }*/
-      //using answers at a later stage
+
+      //******* using answers at a later stage *******
+
       /*async prompting() {
         this.answers = await this.prompt([{
           type    : 'confirm',
@@ -68,9 +70,19 @@ module.exports = class extends Generator {
       writing() {
         this.log('cool feature', this.answers.cool); // user answer `cool` used
       }*/
-      //composing with a Generator class
-      initializing() {
+      //******* composing with a Generator class *******
+
+      /*initializing() {
         this.composeWith(require.resolve('../turbo'));
         this.composeWith(require.resolve('../electric'));
+      }*/
+
+      //******* install dependencies *******
+      /*installingLodash() {
+        this.npmInstall(['lodash'], { 'save-dev': true });
       }
+      end(){
+          console.log('finished !!');
+      }*/
+
 };
