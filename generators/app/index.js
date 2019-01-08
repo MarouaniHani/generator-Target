@@ -16,7 +16,7 @@ module.exports = class extends Generator {
     _method2() {
         this.log('method 2 just ran');
     }*/
-    end(){
+    /*end(){
         console.log('end');
     }
     initializing() {
@@ -30,6 +30,25 @@ module.exports = class extends Generator {
     }
     default(){
         console.log('def');
-    }
+    }*/
+    async prompting() {
+        const answers = await this.prompt([{
+          type    : 'input',
+          name    : 'name',
+          message : 'Your project name',
+          default : this.appname // Default to current folder name
+        }, {
+          type    : 'confirm',
+          name    : 'cool',
+          message : 'Would you like to enable the Cool feature?'
+        }, {
+            type    : 'confirm',
+            name    : 'satis',
+            message : 'are you satisfied ?'
+          }]);
     
+        this.log('app name', answers.name);
+        this.log('cool feature', answers.cool);
+        this.log('satisfaction',answers.satis);
+      }
 };
