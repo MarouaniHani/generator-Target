@@ -16,10 +16,14 @@
   "author": "MarouanyHany",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "yeoman-generator": "^3.2.0"
   },
   "files": [
-        "generators/app",
-        "generators/router"
-    ]
+    "generators/app",
+    "generators/router"
+  ],
+  "devDependencies": {
+    "lodash": "^4.17.11"
+  }
 }
