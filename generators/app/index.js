@@ -1,4 +1,6 @@
 var Generator = require('yeoman-generator');
+var mkdirp = require('mkdirp'); 
+
 
 module.exports = class extends Generator {
     constructor(args, opts) {
@@ -158,6 +160,27 @@ module.exports = class extends Generator {
         this.log('cool feature', answers.cool);
         this.log('satisfaction',answers.satis);
         
+      }*/
+      //******* create folder with name from prompts   *******
+      /*async prompting(){
+          const question = await this.prompt([{
+                type: 'input',
+                name: 'folderName',
+                message: 'your folder name'
+          },
+          {
+              type: 'confirm',
+              name: 'confirmation',
+              message: 'do u want to create the folder'
+          }
+        ]);
+        
+        
+        if(question.confirmation){
+            mkdirp.sync('/testFonc/'+question.folderName);
+            this.log('folder'+question.folderName+' is created successfully !!');
+            Touch
+        }
       }*/
 
 };
