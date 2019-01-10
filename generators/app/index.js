@@ -177,7 +177,7 @@ module.exports = class extends Generator {
         
         
         if(question.confirmation){
-            mkdirp.sync('/testFonc/'+question.folderName);
+            mkdirp.sync(question.folderName);
             this.log('folder'+question.folderName+' is created successfully !!');
             Touch
         }
