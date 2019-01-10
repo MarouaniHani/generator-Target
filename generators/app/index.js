@@ -1,4 +1,5 @@
 var Generator = require('yeoman-generator');
+
 module.exports = class extends Generator {
     constructor(args, opts) {
         super(args, opts);
@@ -88,7 +89,7 @@ module.exports = class extends Generator {
         this.destinationRoot();
 
         this.destinationPath('index.js');
-    }*/
+    }*
     //******* copy file   *******
     /*writin() {
         this.fs.copyTpl(
@@ -113,6 +114,50 @@ module.exports = class extends Generator {
         { title: this.answers.title } // user answer `title` used
       );
     }*/
+    /*askForApplicationType() {
+        
+    }*/
+    //******* prompts with choice menu   *******
+    /*async prompting(){
+        const DEFAULT_APPTYPE ='app1';
+        const applicationTypeChoices = [
+            {
+                value: DEFAULT_APPTYPE,
+                name: 'application 1'
+            },
+            {
+                value: 'app2',
+                name: 'application 2'
+            }
+        ];
+        const PROMPT = await this.prompt([{
+            type: 'list',
+            name: 'applicationType',
+            message: 'which type of application would you like to create ?',
+            choices: applicationTypeChoices,
+            default: DEFAULT_APPTYPE
+        }]);
+    }*/
+    /*async prompting() {
+        const answers = await this.prompt([{
+          type    : 'input',
+          name    : 'name',
+          message : 'Your project name',
+          default : this.appname // Default to current folder name
+        }, {
+          type    : 'confirm',
+          name    : 'cool',
+          message : 'Would you like to enable the Cool feature?'
+        }, {
+            type    : 'confirm',
+            name    : 'satis',
+            message : 'are you satisfied ?'
+          }]);
     
+        this.log('app name', answers.name);
+        this.log('cool feature', answers.cool);
+        this.log('satisfaction',answers.satis);
+        
+      }*/
 
 };
