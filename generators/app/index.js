@@ -202,7 +202,7 @@ module.exports = class extends Generator {
              this.destinationPath(destinationPath)
          );
      }*/
-     //******* create project with name from prompts   *******
+    //******* create project with name from prompts   *******
     /*async prompting() {
         const question = await this.prompt([
             {
@@ -228,4 +228,25 @@ module.exports = class extends Generator {
             this.destinationPath(process.cwd() + '/index.html')
         );
      }*/
+     //******* restrictions on input   *******
+    /*async prompting() {
+        const question = await this.prompt([
+            {
+                type: 'input',
+                name: 'entityTableName',
+                message: 'Enter table name',
+                validate: input => {
+                    if(!/^([a-zA-Z0-9_]*)$/.test(input)){
+                        this.log('The table name cannot contain special characters');
+                    }
+                    if (input.length > 10) {
+                        return 'The table name is too long, try a shorter name';
+                    }
+                    return this.log('success !!');
+
+                }
+
+            }
+        ]);
+    }*/
 };
