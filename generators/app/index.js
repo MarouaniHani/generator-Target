@@ -248,6 +248,6 @@ module.exports = class extends Generator {
 
             }
         ]);
-        //testing branch on git 
+        //testing branch on gitub
     }*/
 };
