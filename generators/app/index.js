@@ -250,4 +250,11 @@ module.exports = class extends Generator {
         ]);
         //testing branch on gitub
     }*/
+    //******* installing yarn  *******
+      /*initializing() {
+        this.installDependencies({
+            yarn: {force: true},
+            npm: false
+          });
+    }*/
 };
