@@ -74,10 +74,10 @@ module.exports = class extends Generator {
     }*/
     //******* composing with a Generator class *******
 
-    /*initializing() {
-        this.composeWith(require.resolve('../turbo'));
-        this.composeWith(require.resolve('../electric'));
-    }*/
+    initializing() {
+        //this.composeWith(require.resolve('../turbo'));
+        this.composeWith(require.resolve('../spring'));
+    }
 
     //******* install dependencies *******
     /*installingLodash() {
