@@ -3,6 +3,32 @@ var mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
     async prompting() {
+        const DEFAULT_SPRING_VERSION ='2.1.2.RELEASE';
+        const springVersionChoice = [
+            {
+                value: '2.1.2.RELEASE',
+                name: 'version_2_1_2'
+            },
+            {
+                value: '2.0.8.RELEASE',
+                name: 'version_2_0_8'
+            },
+            {
+                value: '1.5.19.RELEASE',
+                name: 'version_1_5_19'
+            }
+        ]
+        const DEFAULT_JAVA_VERSION ='1.8';
+        const javaVersionChoice = [
+            {
+                value: '1.8',
+                name: 'version_1_8'
+            },
+            {
+                value: '11',
+                name: 'version_11'
+            }
+        ]
         const question = await this.prompt([
             {
                 type: 'input',
@@ -29,6 +55,20 @@ module.exports = class extends Generator {
                 default: 'Demo project for Spring Boot'
             },
             {
+                type: 'list',
+                name: 'versionSpring',
+                message: 'Choose your spring version',
+                choices: springVersionChoice,
+                default: DEFAULT_SPRING_VERSION
+            },
+            {
+                type: 'list',
+                name: 'versionJava',
+                message: 'Choose your Java version',
+                choices: javaVersionChoice,
+                default: DEFAULT_JAVA_VERSION
+            },
+            {
                 type: 'input',
                 name: 'modelName',
                 message: 'Enter your model name',
@@ -37,7 +77,7 @@ module.exports = class extends Generator {
         ]);
         mkdirp.sync('/home/target/Desktop/' + question.projectName);
         process.chdir('/home/target/Desktop/' + question.projectName);
-
+        // create directories 
         mkdirp.sync(process.cwd() + '/src');
         mkdirp.sync(process.cwd() + '/src/main');
         mkdirp.sync(process.cwd() + '/src/main/java');
@@ -61,15 +101,8 @@ module.exports = class extends Generator {
             this.templatePath('mvnw.cmd'),
             this.destinationPath(process.cwd() + '/mvnw.cmd')
         );
-        this.fs.copyTpl(
-            this.templatePath('pom.xml'),
-            this.destinationPath(process.cwd() + '/pom.xml'),
-            { groupName: question.groupId ,artifactName: question.projectName,name: question.name,description: question.description}
-        );
-        this.fs.copyTpl(
-            this.templatePath('README.md'),
-            this.destinationPath(process.cwd() + '/README.md')
-        );
+        
+        
         this.fs.copyTpl(
             this.templatePath('application.properties'),
             this.destinationPath(process.cwd() + '/src/main/resources/application.properties')
@@ -78,5 +111,12 @@ module.exports = class extends Generator {
             this.templatePath('style.css'),
             this.destinationPath(process.cwd() + '/src/main/resources/static/style.css')
         );
+            this.fs.copyTpl(
+                this.templatePath('pom.xml'),
+                this.destinationPath(process.cwd() + '/pom.xml'),
+                { groupName: question.groupId ,artifactName: question.projectName,
+                  name: question.name,description: question.description,
+                  versionSpring: question.versionSpring,javaVersion:question.versionJava}
+            )
     }
 };
