@@ -78,17 +78,8 @@ module.exports = class extends Generator {
         mkdirp.sync('/home/target/Desktop/' + question.projectName);
         process.chdir('/home/target/Desktop/' + question.projectName);
         // create directories 
-        mkdirp.sync(process.cwd() + '/src');
-        mkdirp.sync(process.cwd() + '/src/main');
-        mkdirp.sync(process.cwd() + '/src/main/java');
-        mkdirp.sync(process.cwd() + '/src/main/java/com');
         mkdirp.sync(process.cwd() + '/src/main/java/com/' + question.projectName);
-        mkdirp.sync(process.cwd() + '/src/main/resources');
         mkdirp.sync(process.cwd() + '/src/main/resources/static');
-        mkdirp.sync(process.cwd() + '/src/test');
-        mkdirp.sync(process.cwd() + '/src/test/java');
-        mkdirp.sync(process.cwd() + '/src/test/java/com');
-        mkdirp.sync(process.cwd() + '/src/test/java/com/example');
         mkdirp.sync(process.cwd() + '/src/test/java/com/example/demo');
 
         //copyFile()

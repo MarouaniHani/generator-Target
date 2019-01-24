@@ -1,0 +1,22 @@
+package <%= groupName %>.<%= artifactName %>.<%= artifactName %>.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+/**
+ * @author omar Jan 21, 2019
+ */
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+	//Value("${CORS_HOSTS}")
+	private String corsHosts="";
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		String[] cors = corsHosts.split(",");
+		registry.addMapping("/**").allowedOrigins(cors).allowedMethods("*");	
+		WebMvcConfigurer.super.addCorsMappings(registry);
+	}
+
+}

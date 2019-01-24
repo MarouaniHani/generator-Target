@@ -1,0 +1,21 @@
+security:
+  oauth2:
+    resource:
+      user-info-uri: ${auth-server:${SSO_HOST}}/userinfo
+      jwk:
+        key-set-uri: ${auth-server:${SSO_HOST}}/keys
+      token-type: Bearer
+    client:
+      client-id: ${OAUTH_CLIENTID}
+      client-secret: ${OAUTH_CLIENT_SECRET}
+management:
+  server:
+    servlet:
+      context-path: /
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    com.example.example: DEBUG

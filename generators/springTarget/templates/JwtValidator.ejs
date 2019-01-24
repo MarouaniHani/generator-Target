@@ -1,0 +1,34 @@
+package <%= groupName %>.<%= artifactName %>.<%= artifactName %>.security.jwt;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.security.jwt.Jwt;
+import org.springframework.security.jwt.JwtHelper;
+
+import java.util.Map;
+
+/**
+ * @author omar Jan 02, 2019
+ */
+
+public class JwtValidator {
+
+	public static JwtUser validate(String token) {
+		final Jwt tokenDecoded = JwtHelper.decode(token);
+		JwtUser jwtUser = null;
+		try {
+
+			final Map<?, ?> authInfo = new ObjectMapper().readValue(tokenDecoded.getClaims(), Map.class);
+			jwtUser = new JwtUser();
+			jwtUser.setSub((String) authInfo.get("sub"));
+			// set it to optional
+			jwtUser.setName((String) authInfo.get("name"));
+			jwtUser.setEmail((String) authInfo.get("email"));
+
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return jwtUser;
+	}
+}
