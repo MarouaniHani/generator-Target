@@ -1,0 +1,12 @@
+package com.<%= groupName %>.<%= artifactName %>.repositories;
+
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import com.<%= groupName %>.<%= artifactName %>.model.<%= modelName %>;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface <%= modelName %>Repository extends MongoRepository<<%= modelName %>,String> {
+
+
+}

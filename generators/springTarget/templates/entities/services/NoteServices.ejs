@@ -1,0 +1,49 @@
+package com.<%= groupName %>.<%= artifactName %>.services;
+
+import com.<%= groupName %>.<%= artifactName %>.model.<%= modelName %>;
+import com.<%= groupName %>.<%= artifactName %>.repositories.<%= modelName %>Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class <%= modelName %>Services implements I<%= modelName %>Services{
+
+    @Autowired
+    <%= modelName %>Repository <%= modelNameLowerCase %>Repository;
+
+    @Override
+    public List<<%= modelName %>> getAll<%= modelName %>s() {
+       List<<%= modelName %>> list = <%= modelNameLowerCase %>Repository.findAll();
+       return list;
+    }
+
+    @Override
+    public <%= modelName %> create<%= modelName %>(<%= modelName %> <%= modelNameLowerCase %>) {
+        return <%= modelNameLowerCase %>Repository.save(<%= modelNameLowerCase %>);
+    }
+
+    @Override
+    public <%= modelName %> get<%= modelName %>ById(String <%= modelNameLowerCase %>Id) {
+        return <%= modelNameLowerCase %>Repository.findById(<%= modelNameLowerCase %>Id).get();
+    }
+
+    @Override
+    public <%= modelName %> update<%= modelName %>(String <%= modelNameLowerCase %>Id, <%= modelName %> <%= modelNameLowerCase %>Details) {
+        <%= modelName %> <%= modelNameLowerCase %> = <%= modelNameLowerCase %>Repository.findById(<%= modelNameLowerCase %>Id).get();
+        <%= modelNameLowerCase %>.setTitle(<%= modelNameLowerCase %>Details.getTitle());
+        <%= modelNameLowerCase %>.setContent(<%= modelNameLowerCase %>Details.getContent());
+        return <%= modelNameLowerCase %>Repository.save(<%= modelNameLowerCase %>);
+    }
+
+    @Override
+    public ResponseEntity<String> delete<%= modelName %>(String <%= modelNameLowerCase %>Id) {
+        <%= modelNameLowerCase %>Repository.delete(get<%= modelName %>ById(<%= modelNameLowerCase %>Id));
+        return new ResponseEntity<>(
+                "operation successful", HttpStatus.OK
+        );
+    }
+}

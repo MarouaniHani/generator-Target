@@ -1,0 +1,45 @@
+package com.<%= groupName %>.<%= artifactName %>.controller;
+
+
+import com.<%= groupName %>.<%= artifactName %>.model.<%= modelName %>;
+import com.<%= groupName %>.<%= artifactName %>.services.I<%= modelName %>Services;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/api")
+public class <%= modelName %>Controller {
+
+    @Autowired
+    I<%= modelName %>Services <%= modelNameLowerCase %>Services;
+
+    @GetMapping("/<%= modelNameLowerCase %>s")
+    public ResponseEntity<List<<%= modelName %>>> getAll<%= modelName %>s(){
+        List<<%= modelName %>> list = <%= modelNameLowerCase %>Services.getAll<%= modelName %>s();
+        return new ResponseEntity<List<<%= modelName %>>>(list, HttpStatus.OK);
+    }
+    @PostMapping("/<%= modelNameLowerCase %>s")
+    public ResponseEntity<<%= modelName %>> create<%= modelName %>(@RequestBody <%= modelName %> n){
+        <%= modelName %> <%= modelNameLowerCase %> = <%= modelNameLowerCase %>Services.create<%= modelName %>(n);
+        return new ResponseEntity<<%= modelName %>>(<%= modelNameLowerCase %>,HttpStatus.CREATED);
+    }
+    @GetMapping("/<%= modelNameLowerCase %>s/{id]")
+    public ResponseEntity<<%= modelName %>> get<%= modelName %>ById(@PathVariable(value = "id") String id){
+        <%= modelName %> <%= modelNameLowerCase %> = <%= modelNameLowerCase %>Services.get<%= modelName %>ById(id);
+        return new ResponseEntity<<%= modelName %>>(<%= modelNameLowerCase %>,HttpStatus.OK);
+    }
+    @PutMapping("/<%= modelNameLowerCase %>s/{id}")
+    public ResponseEntity<<%= modelName %>> update<%= modelName %>(@PathVariable(value = "id") String id, @RequestBody <%= modelName %> <%= modelNameLowerCase %>){
+        <%= modelName %> n = <%= modelNameLowerCase %>Services.update<%= modelName %>(id,<%= modelNameLowerCase %>);
+        return  new ResponseEntity<<%= modelName %>>(n,HttpStatus.ACCEPTED);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete<%= modelName %>(@PathVariable(value = "id") String id){
+        return <%= modelNameLowerCase %>Services.delete<%= modelName %>(id);
+
+    }
+
+}

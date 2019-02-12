@@ -1,0 +1,18 @@
+
+package com.<%= groupName %>.<%= artifactName %>.services;
+
+import com.<%= groupName %>.<%= artifactName %>.model.<%= modelName %>;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
+import java.util.List;
+
+public interface I<%= modelName %>Services {
+    List<<%= modelName %>> getAll<%= modelName %>s();
+    <%= modelName %> create<%= modelName %>(@Valid @RequestBody <%= modelName %> <%= modelNameLowerCase %>);
+    <%= modelName %> get<%= modelName %>ById(@PathVariable(value = "id") String <%= modelNameLowerCase %>Id);
+    <%= modelName %> update<%= modelName %>(@PathVariable(value = "id") String <%= modelNameLowerCase %>Id,@Valid @RequestBody <%= modelName %> <%= modelNameLowerCase %>Details);
+    ResponseEntity<?> delete<%= modelName %>(@PathVariable(value = "id") String <%= modelNameLowerCase %>Id);
+}
