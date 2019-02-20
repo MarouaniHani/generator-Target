@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "target entity",
+            "program": "${workspaceFolder}/cli/jhipster.js",
+            "args": [
+                "entity",
+                "BankAccount",
+                "--force"
+            ],
+            "cwd": "${workspaceFolder}/travis/samples/app-sample-dev/",
+            "console": "integratedTerminal"
+        }
+    ]
+}

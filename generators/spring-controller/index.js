@@ -1,12 +1,13 @@
 var Generator = require('yeoman-generator');
-const prompts = require('./promptsTest');
+
+const prompts = require('./prompts');
+
 module.exports = class extends Generator {
 
     _initializing() {
         return {
             initializing() {
-                //this.entityActions = [];
-                this.fieldActions = [];
+                this.controllerActions = [];
             }
         };
     }
@@ -15,11 +16,16 @@ module.exports = class extends Generator {
     }
     _prompting(){
         return{
-            askForEntityActions: prompts.askForEntityActions,
-            askForFieldActions: prompts.askForFieldActions
+        askForControlerActions: prompts.askForControllerActions
         };
     }
     get prompting(){
         return this._prompting();
+    }
+    _writing(){
+        
+    }
+    get writing(){
+        return this.log('tessssssssssssssssssssssssssssssssst');
     }
 }

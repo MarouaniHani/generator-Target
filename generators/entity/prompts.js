@@ -59,11 +59,6 @@ async function askForEntity() {
             name: 'fieldType',
             message: 'What is the type of your field?',
             choices: fieldTypeChoices
-        },
-        {
-            when: response => response.fieldType !== '',
-
-
         }
     ]);
  /*   if(question.fieldAdd){
