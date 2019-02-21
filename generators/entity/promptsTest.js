@@ -3,7 +3,7 @@ module.exports = {
     askForEntityActions
 };
 var question='';
-async function askForEntityActions(){
+ async function askForEntityActions(){
     
         question = await this.prompt ([
             {
@@ -25,6 +25,7 @@ async function askForEntityActions(){
 function askForFieldActions(){
     const askForFieldAction = done => {
     const prompts = [
+        
         {
             when: question.entityAdd ===true,
             type: 'confirm',
@@ -89,5 +90,6 @@ function askForFieldActions(){
 };
 const done = this.async();
 askForFieldAction(done);
+
 
 }
