@@ -1,0 +1,23 @@
+
+
+
+
+@RestController
+@RequestMapping("/api")
+public class controllerClass  {
+
+
+
+    <%_ for(let idx in controllerActions) { _%>
+   
+    @<%= controllerActions[idx].actionMethod %>Mapping("/<%= (controllerActions[idx].actionPath) %>")
+    public <% if (reactiveController) { %>Mono<String><% } else { %>String<% } %> <%= controllerActions[idx].actionName %>() {
+        <%_ if (reactiveController) { _%>
+        return Mono.just("<%= controllerActions[idx].actionName %>");
+        <%_ } else { _%>
+        return "<%= controllerActions[idx].actionName %>";
+        <%_ } _%>
+    }
+
+    <%_ } _%>
+}

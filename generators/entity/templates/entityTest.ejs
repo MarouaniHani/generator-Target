@@ -1,0 +1,38 @@
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+@Document
+public class entity implements Serializable{
+	
+
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+@Id
+@Getter @Setter private String id;
+<% for(let idx in fieldActions) { %>
+    @Getter @Setter private <%- fieldActions[idx].fieldType %> <%- fieldActions[idx].fieldName %>;
+    
+    <%_ } _%>
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+  

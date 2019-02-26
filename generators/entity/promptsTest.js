@@ -1,6 +1,7 @@
 module.exports = {
     askForFieldActions,
-    askForEntityActions
+    askForEntityActions,
+    test,entityAction
 };
 var question='';
  async function askForEntityActions(){
@@ -20,7 +21,29 @@ var question='';
             }
     
         ]);
-        this.log(question.entityAdd)
+        return question.entityName;
+}
+async function entityAction() {
+    try{
+        question = await this.prompt ([
+            {
+                type: 'confirm',
+                name: 'entityAdd',
+                message: 'Do you want to add entity ?',
+                default: true
+    
+            },       
+            {
+                when: response => response.entityAdd === true,  
+                type: 'input',
+                name: 'entityName'
+            }
+    
+        ]);
+        return question.entityName;
+    }catch (e) {
+        return 'ERROR';
+      }
 }
 function askForFieldActions(){
     const askForFieldAction = done => {
@@ -92,4 +115,11 @@ const done = this.async();
 askForFieldAction(done);
 
 
+}
+async function test(){
+    this.fs.copyTpl(
+        this.templatePath('entityTest.ejs'),
+        this.destinationPath('/home/target/Desktop/entityTest/entity.java')
+    );
+    this.log("****************    "+question.entityName+"   ========> prompts.js")
 }

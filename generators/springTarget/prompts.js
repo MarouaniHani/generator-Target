@@ -128,7 +128,7 @@ async function createProject() {
     mkdirp.sync(process.cwd() + '/src/main/java/com/' + question.groupId + "/" + question.projectName + "/security/jwt");
     mkdirp.sync(process.cwd() + '/src/main/resources');
     mkdirp.sync(process.cwd() + '/src/test/java/com/' + question.groupId + "/" + question.projectName);
-    //copyFile()
+    //copyFile 
     /*this.fs.copyTpl(
         this.templatePath('example.iml'),
         this.destinationPath(process.cwd() + '/' + question.projectName + '.iml')
