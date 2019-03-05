@@ -4,7 +4,7 @@ module.exports = {
     test,entityAction
 };
 var question='';
- async function askForEntityActions(){
+async function askForEntityActions(){
     
         question = await this.prompt ([
             {
@@ -42,7 +42,7 @@ async function entityAction() {
         ]);
         return question.entityName;
     }catch (e) {
-        return 'ERROR';
+        return 'ERROR : '+e;
       }
 }
 function askForFieldActions(){
@@ -92,7 +92,6 @@ function askForFieldActions(){
             ],
             default: 1
         }
-
     ];
     if(!this.defaultOption){
         this.prompt(prompts).then(props => {

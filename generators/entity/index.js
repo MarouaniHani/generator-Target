@@ -42,7 +42,7 @@ module.exports = class extends Generator {
                         )  
                      );
                  });
-                 var t = prompts.askForEntityActions().question;
+                const test = await 
                  this.log(t);
                  /* this.template(
                     `entityTest.ejs`,

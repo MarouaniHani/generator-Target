@@ -76,7 +76,7 @@ module.exports = class extends Generator {
 
     initializing() {
         //this.composeWith(require.resolve('../turbo'));
-        this.composeWith(require.resolve('../entity'));
+        this.composeWith(require.resolve('../test'));
     }
 
     //******* install dependencies *******
